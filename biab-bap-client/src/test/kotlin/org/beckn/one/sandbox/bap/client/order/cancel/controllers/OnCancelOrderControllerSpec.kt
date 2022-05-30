@@ -15,7 +15,6 @@ import org.beckn.one.sandbox.bap.factories.ContextFactory
 import org.beckn.one.sandbox.bap.message.factories.ProtocolOrderFactory
 import org.beckn.protocol.schemas.ProtocolOnCancel
 import org.beckn.protocol.schemas.ProtocolOnCancelMessage
-import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,7 +24,6 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.TestPropertySource
-import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
@@ -80,7 +78,7 @@ class OnCancelOrderControllerSpec @Autowired constructor(
         val mockOnPollService = mock<GenericOnPollService<ProtocolOnCancel, ClientCancelResponse>> {
           onGeneric { onPoll(any(), any()) }.thenReturn(Either.Left(DatabaseError.OnRead))
         }
-        val onCancelPollController = OnCancelOrderController(mockOnPollService, contextFactory, protocolClient)
+        val onCancelPollController = OnUpdateOrderController(mockOnPollService, contextFactory, protocolClient)
         it("should respond with failure") {
           val response = onCancelPollController.onCancelOrderV1(context.messageId)
           response.statusCode shouldBe DatabaseError.OnRead.status()

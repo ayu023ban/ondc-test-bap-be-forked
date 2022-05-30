@@ -43,6 +43,8 @@ data class ProtocolContext @Default constructor(
     RATING("rating"),
     @JsonProperty("support")
     SUPPORT("support"),
+    @JsonProperty("update")
+    UPDATE("update"),
     @JsonProperty("on_search")
     ON_SEARCH("on_search"),
     @JsonProperty("on_select")
@@ -62,6 +64,8 @@ data class ProtocolContext @Default constructor(
     @JsonProperty("on_rating")
     ON_RATING("on_rating"),
     @JsonProperty("on_support")
-    ON_SUPPORT("on_support")
+    ON_SUPPORT("on_support"),
+    @JsonProperty("on_update")
+    ON_UPDATE("on_update")
   }
 }

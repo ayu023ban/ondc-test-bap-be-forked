@@ -128,6 +128,16 @@ data class ProtocolOnCancelMessage @Default constructor(
   val order: ProtocolOrder
 )
 
+data class ProtocolOnUpdate @Default constructor(
+  override val context: ProtocolContext? = null,
+  val message: ProtocolOnUpdateMessage?,
+  override val error: ProtocolError? = null
+) : ProtocolResponse
+
+data class ProtocolOnUpdateMessage @Default constructor(
+  val order: ProtocolOrder
+)
+
 data class ProtocolRatingCategoriesResponse @Default constructor(
   val Category: ProtocolCategory
 )

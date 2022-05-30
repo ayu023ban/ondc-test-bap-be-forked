@@ -33,6 +33,9 @@ interface BppClient {
   @POST("cancel")
   fun cancel(@Body request: ProtocolCancelRequest): Call<ProtocolAckResponse>
 
+  @POST("update")
+  fun update(@Body request: ProtocolUpdateRequest): Call<ProtocolAckResponse>
+
   @POST("status")
   fun getOrderStatus(@Body request: ProtocolOrderStatusRequest): Call<ProtocolAckResponse>
 

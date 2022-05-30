@@ -91,3 +91,13 @@ data class ProtocolOrderStatusRequest @Default constructor(
 data class ProtocolOrderStatusRequestMessage @Default constructor(
   val orderId: String,
 )
+
+data class ProtocolUpdateRequest @Default constructor(
+  override val context: ProtocolContext,
+  val message: ProtocolUpdateRequestMessage
+) : ProtocolRequest
+
+data class ProtocolUpdateRequestMessage @Default constructor(
+  val updateType: String,
+  val order: ProtocolOrder
+)
